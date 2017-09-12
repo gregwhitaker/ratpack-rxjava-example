@@ -71,7 +71,17 @@ public class LocalStorageService implements StorageService {
     }
 
     @Override
-    public Observable<File> load() {
-        return null;
+    public Observable<Path> load(String id) {
+        return Observable.create(subscriber -> {
+            Path storagePath = Paths.get(dataDirectory.toString(), id);
+
+            if (Files.exists(storagePath)) {
+                subscriber.onNext(storagePath);
+            } else {
+                subscriber.onNext(null);
+            }
+
+            subscriber.onCompleted();
+        });
     }
 }
