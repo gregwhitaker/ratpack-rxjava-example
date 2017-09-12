@@ -1,7 +1,7 @@
 package com.github.gregwhitaker.ratpackrxjava.example;
 
-import com.github.gregwhitaker.ratpackrxjava.example.common.handlers.CommonHandlers;
 import com.github.gregwhitaker.ratpackrxjava.example.common.CommonModule;
+import com.github.gregwhitaker.ratpackrxjava.example.common.handlers.CommonHandlers;
 import com.github.gregwhitaker.ratpackrxjava.example.config.StorageConfiguration;
 import com.github.gregwhitaker.ratpackrxjava.example.endpoints.DownloadEndpoint;
 import com.github.gregwhitaker.ratpackrxjava.example.endpoints.EndpointsModule;

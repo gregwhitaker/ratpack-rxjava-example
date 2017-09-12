@@ -11,9 +11,12 @@ import javax.inject.Singleton;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.UUID;
 
 @Singleton
@@ -41,6 +44,24 @@ public class LocalStorageService implements StorageService {
         return Observable.create(subscriber -> {
             String id = UUID.randomUUID().toString();
 
+            FileChannel fchannel = null;
+            try {
+                fchannel = FileChannel.open(Paths.get(dataDirectory.toString(), id), StandardOpenOption.CREATE_NEW, StandardOpenOption.APPEND);
+                fchannel.transferFrom(Channels.newChannel(inputStream), 0, inputStream.available());
+            } catch (IOException e) {
+                subscriber.onError(e);
+            } finally {
+                if (fchannel != null) {
+                    try {
+                        fchannel.close();
+                    } catch (IOException e) {
+                        // Noop
+                    }
+                }
+            }
+
+            subscriber.onNext(new Metadata(id));
+            subscriber.onCompleted();
         });
     }
 

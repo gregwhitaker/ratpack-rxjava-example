@@ -23,7 +23,7 @@ public class UploadEndpoint implements Action<Chain> {
 
     @Override
     public void execute(Chain chain) throws Exception {
-        chain.post("/files", ctx -> {
+        chain.post("files", ctx -> {
             Observable<Metadata> result = RxRatpack.observe(ctx.getRequest().getBody())
                     .flatMap((Func1<TypedData, Observable<Metadata>>) typedData -> storageService.save(typedData.getInputStream()));
 
