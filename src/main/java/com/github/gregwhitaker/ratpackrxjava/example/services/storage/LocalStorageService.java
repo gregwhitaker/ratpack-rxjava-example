@@ -46,8 +46,14 @@ public class LocalStorageService implements StorageService {
 
             FileChannel fchannel = null;
             try {
-                fchannel = FileChannel.open(Paths.get(dataDirectory.toString(), id), StandardOpenOption.CREATE_NEW, StandardOpenOption.APPEND);
+                Path newPath = Paths.get(dataDirectory.toString(), id);
+
+                LOG.info("Saving file: {}", newPath.toString());
+
+                fchannel = FileChannel.open(newPath, StandardOpenOption.CREATE_NEW, StandardOpenOption.APPEND);
                 fchannel.transferFrom(Channels.newChannel(inputStream), 0, inputStream.available());
+
+                subscriber.onNext(new Metadata(id));
             } catch (IOException e) {
                 subscriber.onError(e);
             } finally {
@@ -60,7 +66,6 @@ public class LocalStorageService implements StorageService {
                 }
             }
 
-            subscriber.onNext(new Metadata(id));
             subscriber.onCompleted();
         });
     }
