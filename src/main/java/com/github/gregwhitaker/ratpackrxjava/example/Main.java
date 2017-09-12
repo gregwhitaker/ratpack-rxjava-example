@@ -1,7 +1,8 @@
 package com.github.gregwhitaker.ratpackrxjava.example;
 
 import com.github.gregwhitaker.ratpackrxjava.example.common.CommonHandlers;
-import com.github.gregwhitaker.ratpackrxjava.example.config.AppConfiguration;
+import com.github.gregwhitaker.ratpackrxjava.example.common.CommonModule;
+import com.github.gregwhitaker.ratpackrxjava.example.config.StorageConfiguration;
 import com.github.gregwhitaker.ratpackrxjava.example.endpoints.DownloadEndpoint;
 import com.github.gregwhitaker.ratpackrxjava.example.endpoints.EndpointsModule;
 import com.github.gregwhitaker.ratpackrxjava.example.endpoints.UploadEndpoint;
@@ -11,6 +12,9 @@ import ratpack.rx.RxRatpack;
 import ratpack.server.BaseDir;
 import ratpack.server.RatpackServer;
 
+/**
+ * Runs the Ratpack RxJava Example application.
+ */
 public class Main {
 
     public static void main(String... args) throws Exception {
@@ -19,10 +23,11 @@ public class Main {
         RatpackServer.start(s -> s
                 .serverConfig(c -> c
                         .yaml("config.yaml")
-                        .require("/app", AppConfiguration.class)
+                        .require("/app", StorageConfiguration.class)
                         .baseDir(BaseDir.find()).build())
                 .registry(Guice.registry(b -> b
-                        .bindInstance(AppConfiguration.class, b.getServerConfig().get("/app", AppConfiguration.class))
+                        .bindInstance(StorageConfiguration.class, b.getServerConfig().get("/storage", StorageConfiguration.class))
+                        .module(CommonModule.class)
                         .module(EndpointsModule.class)
                         .module(ServicesModule.class))
                 )
