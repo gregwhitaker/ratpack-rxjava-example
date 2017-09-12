@@ -4,6 +4,9 @@ import ratpack.handling.Context;
 import ratpack.handling.Handler;
 import ratpack.http.MutableHeaders;
 
+/**
+ * Handler responsible for adding CORS headers.
+ */
 public class CorsHandler implements Handler {
 
     @Override

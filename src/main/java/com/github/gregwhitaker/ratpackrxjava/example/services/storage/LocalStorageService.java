@@ -8,7 +8,6 @@ import rx.Observable;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.channels.Channels;
@@ -19,6 +18,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.UUID;
 
+/**
+ * {@link StorageService} implementation that stores uploaded files on the local filesystem.
+ */
 @Singleton
 public class LocalStorageService implements StorageService {
 

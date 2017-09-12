@@ -4,6 +4,9 @@ import com.github.gregwhitaker.ratpackrxjava.example.services.storage.LocalStora
 import com.github.gregwhitaker.ratpackrxjava.example.services.storage.StorageService;
 import com.google.inject.AbstractModule;
 
+/**
+ * Guice module that loads all services.
+ */
 public class ServicesModule extends AbstractModule {
 
     @Override

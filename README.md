@@ -1,10 +1,20 @@
 # ratpack-rxjava-example
 An example of using [RxJava](https://github.com/ReactiveX/RxJava) with [Ratpack](https://ratpack.io/).
 
+This example starts a Ratpack application that allows the user to upload and download files.
+
 ## Running the Example
 The example can be run using the following Gradle command:
 
     $ ./gradlew run
+
+Once the application has started you may upload a file to the service using the following curl command:
+
+    $ curl -i -X POST -H "Content-Type: image/jpeg" -F "data=@demo/cat1.jpeg" http://localhost:5050/files
+
+Now, you may download the file you just uploaded using the following curl command:
+
+    $ curl -i http://localhost:5050/files/{file id here}
 
 ## Bugs and Feedback
 For bugs, questions and discussions please use the [Github Issues](https://github.com/gregwhitaker/ratpack-rxjava-example/issues).

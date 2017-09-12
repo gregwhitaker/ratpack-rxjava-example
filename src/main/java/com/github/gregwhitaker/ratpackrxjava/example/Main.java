@@ -23,7 +23,7 @@ public class Main {
         RatpackServer.start(s -> s
                 .serverConfig(c -> c
                         .yaml("config.yaml")
-                        .require("/app", StorageConfiguration.class)
+                        .require("/storage", StorageConfiguration.class)
                         .baseDir(BaseDir.find()).build())
                 .registry(Guice.registry(b -> b
                         .bindInstance(StorageConfiguration.class, b.getServerConfig().get("/storage", StorageConfiguration.class))

@@ -4,6 +4,9 @@ import com.github.gregwhitaker.ratpackrxjava.example.common.handlers.CommonHandl
 import com.github.gregwhitaker.ratpackrxjava.example.common.handlers.CorsHandler;
 import com.google.inject.AbstractModule;
 
+/**
+ * Guice module that loads common components.
+ */
 public class CommonModule extends AbstractModule {
 
     @Override
