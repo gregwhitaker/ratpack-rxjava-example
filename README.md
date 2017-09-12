@@ -1,5 +1,5 @@
 # ratpack-rxjava-example
-[![Build Status](https://travis-ci.org/gregwhitaker/ratpack-rxjava-example.svg?branch=catnap2)](https://travis-ci.org/gregwhitaker/ratpack-rxjava-example)
+[![Build Status](https://travis-ci.org/gregwhitaker/ratpack-rxjava-example.svg?branch=master)](https://travis-ci.org/gregwhitaker/ratpack-rxjava-example)
 
 An example of using [RxJava](https://github.com/ReactiveX/RxJava) with [Ratpack](https://ratpack.io/).
 
