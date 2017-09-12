@@ -1,4 +1,4 @@
-package com.github.gregwhitaker.ratpackrxjava.example.common;
+package com.github.gregwhitaker.ratpackrxjava.example.common.handlers;
 
 import ratpack.handling.Context;
 import ratpack.handling.Handler;

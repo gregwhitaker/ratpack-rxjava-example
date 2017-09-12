@@ -6,6 +6,9 @@ import ratpack.handling.Chain;
 
 import javax.inject.Inject;
 
+/**
+ * Rest endpoints that handle file downloads.
+ */
 public class DownloadEndpoint implements Action<Chain> {
 
     @Inject

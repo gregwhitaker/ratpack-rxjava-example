@@ -10,9 +10,11 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.UUID;
 
 @Singleton
 public class LocalStorageService implements StorageService {
@@ -35,8 +37,11 @@ public class LocalStorageService implements StorageService {
     }
 
     @Override
-    public Observable<Metadata> save() {
-        return null;
+    public Observable<Metadata> save(InputStream inputStream) {
+        return Observable.create(subscriber -> {
+            String id = UUID.randomUUID().toString();
+
+        });
     }
 
     @Override
