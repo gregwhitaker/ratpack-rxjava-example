@@ -7,6 +7,6 @@ public class CommonHandlers implements Action<Chain> {
 
     @Override
     public void execute(Chain chain) throws Exception {
-
+        chain.all(CorsHandler.class);
     }
 }
